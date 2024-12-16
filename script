@@ -17,15 +17,42 @@ hubFrame.Parent = screenGui
 local featureButton = Instance.new("TextButton")
 featureButton.Size = UDim2.new(0.8, 0, 0.1, 0)
 featureButton.Position = UDim2.new(0.1, 0, 0.1, 0)
-featureButton.Text = "Feature 1"
+featureButton.Text = "Get Gun"
 featureButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
 featureButton.Parent = hubFrame
 
 -- Connect the button to a function
 featureButton.MouseButton1Click:Connect(function()
-    print("Feature 1 activated!")
+    print("Get Gun activated!")
     -- Add feature logic here
 end)
 
--- Additional buttons and features can be added similarly
+-- Create a close button (X) in the upper right corner of the frame
+local closeButton = Instance.new("TextButton")
+closeButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+closeButton.Position = UDim2.new(0.9, 0, 0, 0)
+closeButton.Text = "X"
+closeButton.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+closeButton.Parent = hubFrame
+
+-- Create an open button on the left side of the screen
+local openButton = Instance.new("TextButton")
+openButton.Size = UDim2.new(0.1, 0, 0.1, 0)
+openButton.Position = UDim2.new(0, 0, 0.45, 0)
+openButton.Text = "Open"
+openButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
+openButton.Parent = screenGui
+openButton.Visible = false
+
+-- Connect the close button to hide the frame and show the open button
+closeButton.MouseButton1Click:Connect(function()
+    hubFrame.Visible = false
+    openButton.Visible = true
+end)
+
+-- Connect the open button to show the frame and hide itself
+openButton.MouseButton1Click:Connect(function()
+    hubFrame.Visible = true
+    openButton.Visible = false
+end)
 
