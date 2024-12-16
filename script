@@ -1,0 +1,31 @@
+local player = game.Players.LocalPlayer
+local playerGui = player:WaitForChild("PlayerGui")
+
+-- Create a ScreenGui
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "MurderMystery2Hub"
+screenGui.Parent = playerGui
+
+-- Create a Frame for the hub
+local hubFrame = Instance.new("Frame")
+hubFrame.Size = UDim2.new(0.3, 0, 0.4, 0)
+hubFrame.Position = UDim2.new(0.35, 0, 0.3, 0)
+hubFrame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+hubFrame.Parent = screenGui
+
+-- Create a TextButton for a feature
+local featureButton = Instance.new("TextButton")
+featureButton.Size = UDim2.new(0.8, 0, 0.1, 0)
+featureButton.Position = UDim2.new(0.1, 0, 0.1, 0)
+featureButton.Text = "Feature 1"
+featureButton.BackgroundColor3 = Color3.fromRGB(100, 100, 100)
+featureButton.Parent = hubFrame
+
+-- Connect the button to a function
+featureButton.MouseButton1Click:Connect(function()
+    print("Feature 1 activated!")
+    -- Add feature logic here
+end)
+
+-- Additional buttons and features can be added similarly
+
