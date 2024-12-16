@@ -84,3 +84,4 @@ openButton.MouseButton1Click:Connect(function()
     hubFrame.Visible = true
     openButton.Visible = false
 end)
+
