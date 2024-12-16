@@ -1,5 +1,7 @@
 local player = game.Players.LocalPlayer
 local playerGui = player:WaitForChild("PlayerGui")
+local replicatedStorage = game:GetService("ReplicatedStorage")
+local getGunHubRequest = replicatedStorage:WaitForChild("GetGunHubRequest")
 
 -- Create a ScreenGui
 local screenGui = Instance.new("ScreenGui")
@@ -24,37 +26,8 @@ featureButton.Parent = hubFrame
 -- Connect the button to a function
 featureButton.MouseButton1Click:Connect(function()
     print("Get Gun activated!")
-    -- Add feature logic here
+    getGunHubRequest:FireServer()
 end)
-
-local replicatedStorage = game:GetService("ReplicatedStorage")
-local getGunHubRequest = replicatedStorage:WaitForChild("GetGunHubRequest")
-local workspace = game:GetService("Workspace")
-
-local function teleportPlayerToGun(player)
-    -- Check if the game has begun and the sheriff is dead
-    local gameStarted = true -- Placeholder, replace with actual game state check
-    local sheriffDead = true -- Placeholder, replace with actual check for sheriff's status
-
-    if gameStarted and sheriffDead then
-        -- Logic to teleport the player to the gun's location
-        local gun = workspace:FindFirstChild("Gun")
-        if gun then
-            local character = player.Character
-            if character then
-                local humanoidRootPart = character:FindFirstChild("HumanoidRootPart")
-                if humanoidRootPart then
-                    humanoidRootPart.CFrame = gun.Handle.CFrame
-                    print(player.Name .. " has been teleported to the gun.")
-                end
-            end
-        end
-    else
-        print("Conditions not met for " .. player.Name .. " to receive the gun.")
-    end
-end
-
-getGunHubRequest.OnServerEvent:Connect(teleportPlayerToGun)
 
 -- Create a close button (X) in the upper right corner of the frame
 local closeButton = Instance.new("TextButton")
